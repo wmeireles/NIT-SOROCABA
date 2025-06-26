@@ -6,67 +6,239 @@
   <title>NIT - Núcleo de Informações Educacionais e Tecnologia</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #004085;
+      --secondary-color: #0d6efd;
+      --background-color: #f4f8fb;
+      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
-      background-color: #f4f8fb;
+      background: linear-gradient(135deg, #f4f8fb 0%, #e8f2ff 100%);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
     }
+    
     header {
-      background-color: #004085;
+      background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
       color: white;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
       margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
     }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    header .container {
+      position: relative;
+      z-index: 1;
+    }
+    
     header h1 {
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
+    
     header p {
-      font-size: 1rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
     }
+    
     section {
+      padding: 2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    section:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+    
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 3px solid #e3f2fd;
+      padding-bottom: 0.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .info-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .info-links a {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      color: var(--secondary-color);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: var(--transition);
+      border: 1px solid #e3f2fd;
+      background: #fafbfc;
+    }
+    
+    .info-links a:hover {
+      background: var(--secondary-color);
+      color: white;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+    
+    .info-links a::before {
+      content: '📄';
+      margin-right: 0.5rem;
+      font-size: 1.1em;
+    }
+    
+    footer {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    
+    .img-equipamento {
+      height: 200px;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+      background: #f8f9fa;
+      padding: 1rem;
+    }
+    
+    .img-equipamento:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-equipamento {
+      background: white;
+      border-radius: 12px;
       padding: 1.5rem;
-      background-color: white;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .card-equipamento:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    ul.list-unstyled li {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background: white;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      margin-bottom: 2rem;
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.05);
     }
-    h2 {
-      color: #004085;
-      border-bottom: 2px solid #dee2e6;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+    
+    ul.list-unstyled li:hover {
+      transform: translateX(5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
-    .info-links a {
-      display: block;
-      margin: 0.25rem 0;
-      color: #0d6efd;
-      text-decoration: none;
-    }
-    .info-links a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      background-color: #004085;
-      color: white;
-      padding: 1rem 0;
-      text-align: center;
-    }
-    .img-fluid {
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 1rem;
-    }
-    .img-equipamento {
-     height: 180px;
-     width: auto;
-     object-fit: contain;
-     border-radius: 8px;
-     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-     margin-bottom: 1rem;
-    }
+    
     ul.list-unstyled li img {
-     border-radius: 4px; 
+      border-radius: 6px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     }
-
+    
+    ul.list-unstyled li a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    ul.list-unstyled li a:hover {
+      color: var(--primary-color);
+    }
+    
+    .contact-info {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--secondary-color);
+    }
+    
+    .contact-info strong {
+      color: var(--primary-color);
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 1rem;
+      }
+      
+      section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .img-equipamento {
+        height: 150px;
+      }
+      
+      .info-links a {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body>
@@ -78,88 +250,181 @@
   </header>
 
   <main class="container">
-    <section>
-      <h2>Apresentação</h2>
-      <p>
-        O NIT é responsável por oferecer suporte técnico e orientação quanto ao uso das tecnologias educacionais, promovendo a integração entre os recursos tecnológicos e o processo de ensino-aprendizagem.
-      </p>
-    </section>
-
-    <section>
-      <h2>Manuais e Downloads</h2>
-      <div class="row text-center">
-        <div class="col-md-4 mb-4">
-          <img src="manuais.jpg" class="img-equipamento" alt="Equipamentos">
-          <div class="info-links">
-            <a href="https://seesp-my.sharepoint.com/:f:/g/personal/ricardo_alves_educacao_sp_gov_br/EgKZsg2MGuNFrGRwPcizZHEBKF47lwDbAoumwhFUhDA6gw?e=9uJnvv">Imagem Notebook Positivo Win 11</a>
-            <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Netbook%20Positivo%20Aluno%20V4&ga=1">Imagem Netbook Positivo Aluno</a>
-            <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Desktop%20Lenovo%20%2D%20Notebook%20Lenovo%20%2D%20Notebook%20Multilaser&ga=1">Imagem Notebook Multilaser</a>
-            <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Desktop%20Lenovo%20%2D%20Notebook%20Lenovo%20%2D%20Notebook%20Multilaser&ga=1">Imagem Notebook Lenovo</a>
-            <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Desktop%20Lenovo%20%2D%20Notebook%20Lenovo%20%2D%20Notebook%20Multilaser&ga=1">Imagem Desktop Lenovo</a>
-        </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <img src="equipamentos.jpg" class="img-equipamento" alt="Manuais">
-          <div class="info-links">
-            <a href="docs/tutorial-de-atualizao-dos-aplicativos-do-tablet-positivo.pdf">Atualização dos Aplicativos do tablet Positivo</a>
-            <a href="docs/hardreset-tablet-positivo-t2040-2.pdf">Hard Reset Tablet Positivo</a>
-            <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FManuais%20Equipamentos&ga=1">Manuais dos Equipamentos</a>
+    <section class="fade-in">
+      <h2>🎯 Apresentação</h2>
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <p class="lead">
+            O <strong>NIT</strong> é responsável por oferecer suporte técnico e orientação quanto ao uso das tecnologias educacionais, promovendo a integração entre os recursos tecnológicos e o processo de ensino-aprendizagem.
+          </p>
+          <div class="row mt-4">
+            <div class="col-sm-6 mb-3">
+              <div class="d-flex align-items-center">
+                <span class="badge bg-primary me-2" style="font-size: 1.2em;">🛠️</span>
+                <span><strong>Suporte Técnico</strong></span>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+              <div class="d-flex align-items-center">
+                <span class="badge bg-primary me-2" style="font-size: 1.2em;">📚</span>
+                <span><strong>Orientação Educacional</strong></span>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+              <div class="d-flex align-items-center">
+                <span class="badge bg-primary me-2" style="font-size: 1.2em;">💻</span>
+                <span><strong>Tecnologia Educacional</strong></span>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3">
+              <div class="d-flex align-items-center">
+                <span class="badge bg-primary me-2" style="font-size: 1.2em;">🎓</span>
+                <span><strong>Ensino-Aprendizagem</strong></span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="img-equipamento" alt="Garantia">
-          <div class="info-links">
-            <a href="https://assist.positivotecnologia.com.br/">Garantia Positivo</a>
-            <a href="https://multilaserbrasil.atlassian.net/servicedesk/customer/portal/46">Garantia Multilaser</a>
-            <a href="mailto:premier_br@lenovo.com">Suporte Lenovo</a>
-            <a href="mailto:licitacao@ebnsa.com.br">Licitação EBNSA</a>
-            <a href="mailto:suporte@tes.com.br">Suporte TES</a>
+        <div class="col-md-4 text-center">
+          <div class="p-4" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-radius: 12px;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🏫</div>
+            <h5 style="color: var(--primary-color);">Diretoria de Ensino</h5>
+            <p class="mb-0">Região de Sorocaba</p>
           </div>
         </div>
       </div>
     </section>
-    <section>
-        <h2>Suporte Técnico</h2>
-        <ul class="list-unstyled">
-          <li class="d-flex align-items-center mb-3">
-            <img src="icons/config.png" width="32" class="me-2" alt="Ícone configuração">
-            <a href="https://escolatotal.educacao.sp.gov.br/Inicio/Index?ReturnUrl=%2fDashboard%2fDisponibilidadeWiFi" target="_blank">PAINEL ESCOLA TOTAL</a>
-          </li>
-          <li class="d-flex align-items-center mb-3">
-            <img src="icons/email.png" width="32" class="me-2" alt="Ícone e-mail">
-            <a href="https://atendimento.educacao.sp.gov.br/" target="_blank">PORTAL DE ATENDIMENTO - SED</a>
-          </li>
-          <li class="d-flex align-items-center mb-3">
-            <img src="icons/atendimento.png" width="32" class="me-2" alt="Ícone atendimento">
-            <a href="https://sei.sp.gov.br" target="_blank">Sistema Eletrônico de Informações - SEI</a>
-          </li>
-          <li class="d-flex align-items-center mb-3">
-            <img src="icons/portal.png" width="32" class="me-2" alt="Ícone portal">
-            <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=4765445b-32c6-49b0-83e6-1d93765276ca&redirect_uri=https%3a%2f%2fwww.office.com%2flandingv2&response_type=code+id_token&scope=openid+profile+https%3a%2f%2fwww.office.com%2fv2%2fOfficeHome.All&response_mode=form_post&nonce=638437115338950116.NzY0YmQzYzctMzVlYy00NTgzLTliYzUtZjNmNTEwNzg5ZTIwZTdiMTRjMTQtY2VkNy00NWQ1LWE2MWUtYTI5NjQwMzhiZmQw&ui_locales=pt-BR&mkt=pt-BR&login_hint=e042444a%40educacao.sp.gov.br&client-request-id=837354d8-6d44-4410-a49d-d3f431cc6290&state=g0GU4edoLqYmXhp7y6hyjUcHk4g8rFC9xSZNmth-DsvdpYewTuyS-DA40cWPDIC9R4ohHHKKET9XRTViGKwUIPxHyVRQg_RmYJ-Xur-NWkoEwx99DnBcHJykEdwA6TWTJIbKYOg5hqunHQxXhWkkKlzXwZH1zY0GDKvy7OkHltAHeCIag7-4HQu_dQOGET0PK8CgbDyjhuayq5d7XGe8GXytyp8uwUyaQZPERus6m7SDTbcwlqgThOf0wsM4_qU7uzLmbBXLd41_i5dl-3kv_v07zWjJHCdMa3zw-GuSaet3CWeETGCETFBKFeiJ0csKqcOS2EIR_0Iiy7X-V6Yl2Q&x-client-SKU=ID_NET6_0&x-client-ver=6.34.0.0&sso_nonce=AwABAAEAAAACAOz_BQD0__0F6TOcK0uessyKHSiij5y_o_b3U-u_XCw26Z8sO2ShTc5SQacp_sdr7DRuzUOZH9RRopCZ_Nv2cEJ9u8BJagYgAA&mscrid=837354d8-6d44-4410-a49d-d3f431cc6290" target="_blank">OFFICE 365</a>
-          </li>
-        </ul>
-      </section>
+
+    <section class="fade-in">
+      <h2>📚 Manuais e Downloads</h2>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-equipamento text-center">
+            <img src="manuais.jpg" class="img-equipamento" alt="Imagens de Sistema">
+            <h5 class="mb-3" style="color: var(--primary-color); font-weight: 600;">💻 Imagens de Sistema</h5>
+            <div class="info-links">
+              <a href="https://seesp-my.sharepoint.com/:f:/g/personal/ricardo_alves_educacao_sp_gov_br/EgKZsg2MGuNFrGRwPcizZHEBKF47lwDbAoumwhFUhDA6gw?e=9uJnvv" target="_blank">Notebook Positivo Win 11</a>
+              <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Desktop%20Lenovo%20%2D%20Notebook%20Lenovo%20%2D%20Notebook%20Multilaser&ga=1" target="_blank">Notebook Multilaser</a>
+              <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Desktop%20Lenovo%20%2D%20Notebook%20Lenovo%20%2D%20Notebook%20Multilaser&ga=1" target="_blank">Notebook Lenovo</a>
+              <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FEscola%20%2D%20Imagem%20Desktop%20Lenovo%20%2D%20Notebook%20Lenovo%20%2D%20Notebook%20Multilaser&ga=1" target="_blank">Desktop Lenovo</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-equipamento text-center">
+            <img src="equipamentos.jpg" class="img-equipamento" alt="Manuais e Tutoriais">
+            <h5 class="mb-3" style="color: var(--primary-color); font-weight: 600;">📖 Manuais e Tutoriais</h5>
+            <div class="info-links">
+              <a href="docs/tutorial-de-atualizao-dos-aplicativos-do-tablet-positivo.pdf" target="_blank">Atualização Tablet Positivo</a>
+              <a href="docs/hardreset-tablet-positivo-t2040-2.pdf" target="_blank">Hard Reset Tablet Positivo</a>
+              <a href="https://seesp-my.sharepoint.com/personal/ricardo_alves_educacao_sp_gov_br/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fricardo%5Falves%5Feducacao%5Fsp%5Fgov%5Fbr%2FDocuments%2FManuais%20Equipamentos&ga=1" target="_blank">Manuais dos Equipamentos</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card-equipamento text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="img-equipamento" alt="Suporte e Garantia">
+            <h5 class="mb-3" style="color: var(--primary-color); font-weight: 600;">🛠️ Suporte e Garantia</h5>
+            <div class="info-links">
+              <a href="https://assist.positivotecnologia.com.br/" target="_blank">Garantia Positivo</a>
+              <a href="https://multilaserbrasil.atlassian.net/servicedesk/customer/portal/46" target="_blank">Garantia Multilaser</a>
+              <a href="mailto:premier_br@lenovo.com">Suporte Lenovo</a>
+              <a href="mailto:licitacao@ebnsa.com.br">Licitação EBNSA</a>
+              <a href="mailto:suporte@tes.com.br">Suporte TES</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-in">
+      <h2>🔧 Suporte Técnico</h2>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <div class="me-3">
+              <img src="icons/config.png" width="40" class="me-2" alt="Ícone configuração">
+            </div>
+            <div>
+              <h6 class="mb-1" style="color: var(--primary-color);">Painel Escola Total</h6>
+              <a href="https://escolatotal.educacao.sp.gov.br/Inicio/Index?ReturnUrl=%2fDashboard%2fDisponibilidadeWiFi" target="_blank" class="stretched-link">Acessar Painel</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <div class="me-3">
+              <img src="icons/email.png" width="40" class="me-2" alt="Ícone e-mail">
+            </div>
+            <div>
+              <h6 class="mb-1" style="color: var(--primary-color);">Portal de Atendimento</h6>
+              <a href="https://atendimento.educacao.sp.gov.br/" target="_blank" class="stretched-link">Abrir Chamado</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <div class="me-3">
+              <img src="icons/atendimento.png" width="40" class="me-2" alt="Ícone atendimento">
+            </div>
+            <div>
+              <h6 class="mb-1" style="color: var(--primary-color);">Sistema SEI</h6>
+              <a href="https://sei.sp.gov.br" target="_blank" class="stretched-link">Acessar SEI</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="d-flex align-items-center p-3 bg-light rounded-3 h-100">
+            <div class="me-3">
+              <img src="icons/portal.png" width="40" class="me-2" alt="Ícone portal">
+            </div>
+            <div>
+              <h6 class="mb-1" style="color: var(--primary-color);">Office 365</h6>
+              <a href="https://www.office.com" target="_blank" class="stretched-link">Acessar Office</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
       
-      <section>
-        <h2>Contato</h2>
-        <p><strong>NIT - Núcleo de Informações Educacionais e Tecnologia de Sorocaba</strong></p>
-        <p><strong>Diretor Técnico:</strong> <em>Ricardo Alves</em><br>
-        <strong>E-mail:</strong> <a href="mailto:desornit@educacao.sp.gov.br">desornit@educacao.sp.gov.br</a><br>
-        <strong>Telefone:</strong> (15) 3212 - 6115</p>
+    <section class="fade-in">
+      <h2>📞 Contato</h2>
+      <div class="contact-info">
+        <h5 style="color: var(--primary-color); margin-bottom: 1rem;">🏢 NIT - Núcleo de Informações Educacionais e Tecnologia de Sorocaba</h5>
+      </div>
       
-        <p><strong>Analista de Suporte:</strong> Fernando Cardoso<br>
-        <strong>E-mail:</strong> <a href="mailto:fernando.rosa@educacao.sp.gov.br">fernando.rosa@educacao.sp.gov.br</a><br>
-        <strong>Telefone:</strong> (15) 3212 - 6149</p>
-      
-        <p><strong>Analista de Suporte:</strong> Willian Meireles<br>
-        <strong>E-mail:</strong> <a href="mailto:willian.meireles@educacao.sp.gov.br">willian.meireles@educacao.sp.gov.br</a><br>
-        <strong>Telefone:</strong> (15) 3212 - 6165</p>
-      </section>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="contact-info">
+            <h6><strong>👨‍💼 Diretor Técnico</strong></h6>
+            <p class="mb-1"><strong>Nome:</strong> Ricardo Alves</p>
+            <p class="mb-1"><strong>📧 E-mail:</strong> <a href="mailto:desornit@educacao.sp.gov.br">desornit@educacao.sp.gov.br</a></p>
+            <p class="mb-0"><strong>📱 Telefone:</strong> (15) 3212-6115</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <div class="contact-info">
+            <h6><strong>🔧 Analista de Suporte</strong></h6>
+            <p class="mb-1"><strong>Nome:</strong> Fernando Cardoso</p>
+            <p class="mb-1"><strong>📧 E-mail:</strong> <a href="mailto:fernando.rosa@educacao.sp.gov.br">fernando.rosa@educacao.sp.gov.br</a></p>
+            <p class="mb-0"><strong>📱 Telefone:</strong> (15) 3212-6149</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4 mb-3">
+          <div class="contact-info">
+            <h6><strong>💻 Analista de Suporte</strong></h6>
+            <p class="mb-1"><strong>Nome:</strong> Willian Meireles</p>
+            <p class="mb-1"><strong>📧 E-mail:</strong> <a href="mailto:willian.meireles@educacao.sp.gov.br">willian.meireles@educacao.sp.gov.br</a></p>
+            <p class="mb-0"><strong>📱 Telefone:</strong> (15) 3212-6165</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 NIT - Diretoria de Ensino de Sorocaba. Todos os direitos reservados.<br>Feito por <a href="https://github.com/wmeireles" class="text-white text-decoration-underline" target="_blank">Willian Meireles</a></p>
-    
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
