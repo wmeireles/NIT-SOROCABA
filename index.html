@@ -72,10 +72,9 @@
       border: 1px solid rgba(0,0,0,0.05);
     }
     
-    section:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-    }
+   section:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
     
     h2 {
       color: var(--primary-color);
@@ -137,36 +136,39 @@
     }
     
     .img-equipamento {
-      height: 200px;
-      width: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: var(--card-shadow);
-      margin-bottom: 1.5rem;
-      transition: var(--transition);
-      background: #f8f9fa;
-      padding: 1rem;
-    }
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+  background: #f8f9fa;
+  padding: 1rem;
+  will-change: transform;
+}
     
     .img-equipamento:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
     
     .card-equipamento {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      height: 100%;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  height: 100%;
+  border: 1px solid rgba(0,0,0,0.05);
+  will-change: transform;
+}
     
     .card-equipamento:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-    }
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
     
     ul.list-unstyled li {
       margin-bottom: 1rem;
